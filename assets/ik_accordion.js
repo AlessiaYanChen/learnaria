@@ -27,7 +27,7 @@
 	Plugin.prototype.init = function () {
 		
 		var id, $elem, plugin;
-		
+		console.log('init');
 		id = 'acc' + $('.ik_accordion').length; // create unique id
 		$elem = this.element;
 		plugin = this;
