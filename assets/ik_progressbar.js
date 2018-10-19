@@ -48,6 +48,7 @@
 			
 		this.notification = $('<div/>') // add div element to be used to notify about the status of download
 			.attr({
+				'aria-role': 'region', // make it a live region
 				'aria-live': 'assertive', // set notofocation priority to high
 				'aria-atomic': 'additions' // notify only about newly added text
 			})
@@ -68,6 +69,28 @@
 			.append(this.fill)
 			.appendTo(this.element);
 		
+	};
+	
+	/**
+	 * Handles kedown event on progressbar element.
+	 *
+	 * @param {Object} event - Keyboard event.
+	 * @param {object} event.data - Event data.
+	 * @param {object} event.data.plugin - Reference to plugin.
+	 */
+	Plugin.prototype.onKeyDown = function(event) {
+		   
+		switch(event.keyCode) {
+			   
+			case ik_utils.keys.space:
+			case ik_utils.keys.enter:
+				event.preventDefault();
+				event.stopPropagation();
+				event.data.plugin.notify();
+				break;
+		}
+	 
+		   
 	};
 	
 	/** 
@@ -153,27 +176,6 @@
 	
 	};
 	
-	/**
-	 * Handles kedown event on progressbar element.
-	 *
-	 * @param {Object} event - Keyboard event.
-	 * @param {object} event.data - Event data.
-	 * @param {object} event.data.plugin - Reference to plugin.
-	 */
-	Plugin.prototype.onKeyDown = function(event) {
-		   
-		switch(event.keyCode) {
-			   
-			case ik_utils.keys.space:
-			case ik_utils.keys.enter:
-				event.preventDefault();
-				event.stopPropagation();
-				event.data.plugin.notify();
-				break;
-		}
-	 
-		   
-	};
 	
 	$.fn[pluginName] = function ( options ) {
 		
