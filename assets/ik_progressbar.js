@@ -58,9 +58,9 @@
 				.addClass('ik_readersonly') // hide element from visual display
 				.attr({
 					'id': id + '_instructions',
-					'aria-hidden': 'true'  // hide element from screen readers to prevent it from being read twice
+				'aria-hidden': 'true'  // hide element from screen readers to prevent it from being read twice
 				})
-			.appendTo(this.element);
+		.appendTo(this.element);
 
 		$('<div/>')
 			.addClass('ik_track')
@@ -119,8 +119,7 @@
 		}
 		
 		.attr({ // accessible
-            'aria-valuenow': val,
-			'aria-busy': true
+            'aria-valuenow': val
         });
 		
 		this.updateDisplay();
