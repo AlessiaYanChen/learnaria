@@ -57,10 +57,10 @@
 			.text(this.options.instructions) // get instruction text from plugin options
 				.addClass('ik_readersonly') // hide element from visual display
 				.attr({
-				'id': id + '_instructions',
-				'aria-hidden': 'true'  // hide element from screen readers to prevent it from being read twice
-		})
-		.appendTo(this.element);
+					'id': id + '_instructions',
+					'aria-hidden': 'true'  // hide element from screen readers to prevent it from being read twice
+				})
+			.appendTo(this.element);
 
 		$('<div/>')
 			.addClass('ik_track')
@@ -119,7 +119,8 @@
 		}
 		
 		.attr({ // accessible
-            'aria-valuenow': val
+            'aria-valuenow': val,
+			'aria-busy': true,
         });
 		
 		this.updateDisplay();
