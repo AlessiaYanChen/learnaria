@@ -120,7 +120,7 @@
 		
 		.attr({ // accessible
             'aria-valuenow': val,
-			'aria-busy': true,
+			'aria-busy': true
         });
 		
 		this.updateDisplay();
