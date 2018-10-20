@@ -67,7 +67,8 @@
 				'id': id,
 				'role': 'region', // add role region to each panel
                 'aria-hidden': true, // mark all panels as hidden
-                'tabindex': -1 // add panels into the tab order
+				'aria-expanded': false,
+                'tabindex': 0 // add panels into the tab order
 			});
 		}).hide();
 		
