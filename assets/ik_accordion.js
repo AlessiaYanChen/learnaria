@@ -149,10 +149,7 @@
 					$btn.attr({
 						"aria-expanded": true
 					})
-					$me.attr{
-						"aria-expanded": false;
-						"aria-hidden": true;
-					})
+					
 					$hdr.next().slideUp(plugin.options.animationSpeed);
 				} else { 
 					$btn.addClass('expanded');
