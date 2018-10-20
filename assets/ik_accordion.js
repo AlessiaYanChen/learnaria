@@ -67,17 +67,10 @@
 				'id': id,
 				'role': 'region', // add role region to each panel
                 'aria-hidden': true, // mark all panels as hidden
-                'tabindex': 0 // add panels into the tab order
+                'tabindex': -1 // add panels into the tab order
 			});
 		}).hide();
 		
-		$('<div/>') // add instructions for screen reader users
-				.attr({
-					'id': id + '_instructions'
-				})
-				.text(this.options.instructions)
-				.addClass('ik_readersonly')
-				.appendTo(this.element);
 	};
 	
 	/**
