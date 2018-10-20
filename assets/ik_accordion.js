@@ -149,14 +149,24 @@
 					$btn.attr({
 						"aria-expanded": true
 					})
-					
+					var $me = $(this), id = $elem.attr('id') + '_panel_' + i;
+					$me.attr({
+						'aria-hidden': false, // mark all panels as hidden
+						'aria-expanded': true,
+						
+					});
 					$hdr.next().slideUp(plugin.options.animationSpeed);
 				} else { 
 					$btn.addClass('expanded');
 					$btn.attr({
 						"aria-expanded": false
 					})
-					
+					var $me = $(this), id = $elem.attr('id') + '_panel_' + i;
+					$me.attr({
+						'aria-hidden': false, // mark all panels as hidden
+						'aria-expanded': true,
+						
+					});
 					$hdr.next().slideDown(plugin.options.animationSpeed);
 				}
 			});
