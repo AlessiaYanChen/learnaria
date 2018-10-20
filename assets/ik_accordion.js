@@ -49,7 +49,7 @@
 								'id': id + '_btn_' + i,
 								'role': 'button',
 								'aria-controls': id + '_panel_' + i, // associate button with corresponding panel
-								'aria-expanded': true, // toggle expanded state
+								'aria-expanded': false, // toggle expanded state
 								'tabindex': 0 //add keyboard focus
 								})
 							.addClass('button')
@@ -143,9 +143,27 @@
 				
 				if($btn[0] != $(event.currentTarget)[0]) { 
 					$btn.removeClass('expanded');
+					$btn.attr({
+						"aria-expanded": true
+					})
+					var $me = $(this), id = $elem.attr('id') + '_panel_' + i;
+					$me.attr({
+
+						'aria-hidden': false, // mark all panels as hidden
+						
+					});
 					$hdr.next().slideUp(plugin.options.animationSpeed);
 				} else { 
 					$btn.addClass('expanded');
+					$btn.attr({
+						"aria-expanded": false
+					})
+					var $me = $(this), id = $elem.attr('id') + '_panel_' + i;
+					$me.attr({
+
+						'aria-hidden': true, // mark all panels as hidden
+						
+					});
 					$hdr.next().slideDown(plugin.options.animationSpeed);
 				}
 			});
