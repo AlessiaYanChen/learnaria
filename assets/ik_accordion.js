@@ -51,7 +51,8 @@
 								'role': 'button',
 								'aria-controls': id + '_panel_' + i, // associate button with corresponding panel
 								'aria-expanded': false, // toggle expanded state
-								'tabindex': 0 //add keyboard focus
+								'tabindex': 0, //add keyboard focus
+								'aria-controls': $elem.attr('id') + '_panel_' + i
 								})
 							.addClass('button')
 							.html($me.html())
