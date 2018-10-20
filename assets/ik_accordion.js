@@ -153,7 +153,6 @@
 					$me.attr({
 						'aria-hidden': true, // mark all panels as hidden
 						'aria-expanded': false,
-						
 					});
 					$hdr.next().slideUp(plugin.options.animationSpeed);
 				} else { 
@@ -175,6 +174,18 @@
 		
 			isVisible = !!$panel.is(':visible');
 			$panel.slideToggle({ duration: plugin.options.animationSpeed });
+			
+			
+			if ($panel.attr("aria-expanded")==true)
+			{
+				$panel.attr({"aria-expanded": false});
+				$panel.hide();
+			}
+			else
+			{
+				$panel.attr({"aria-expanded": true});
+				$panel.show();
+			}
 			
 		}
 	};
