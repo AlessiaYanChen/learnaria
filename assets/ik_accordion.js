@@ -49,7 +49,7 @@
 								'id': id + '_btn_' + i,
 								'role': 'button',
 								'aria-controls': id + '_panel_' + i, // associate button with corresponding panel
-								'aria-expanded': false, // toggle expanded state
+								'aria-expanded': true, // toggle expanded state
 								'tabindex': 0 //add keyboard focus
 								})
 							.addClass('button')
