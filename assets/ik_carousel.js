@@ -30,7 +30,7 @@
 		var id, plugin, $elem, $image, $controls, $navbar;
 		
 		plugin = this;
-		id = 'carousel' + $('.ik_slider').length;
+		id = 'carousel' + $('.ik_carousel').length;
 		$elem = plugin.element;
 		
 		$elem
