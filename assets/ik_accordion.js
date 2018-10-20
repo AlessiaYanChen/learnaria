@@ -2,6 +2,7 @@
  	
 	var pluginName = 'ik_accordion',
 		defaults = { // set default parameters
+			'instructions': 'Use the enter to expand and collapse the panels ',
 			autoCollapse: false,
 			animationSpeed: 200
 		};
@@ -70,6 +71,13 @@
 			});
 		}).hide();
 		
+		$('<div/>') // add instructions for screen reader users
+				.attr({
+					'id': id + '_instructions'
+				})
+				.text(this.options.instructions)
+				.addClass('ik_readersonly')
+				.appendTo(this.element);
 	};
 	
 	/**
@@ -146,24 +154,13 @@
 					$btn.attr({
 						"aria-expanded": true
 					})
-					var $me = $(this), id = $elem.attr('id') + '_panel_' + i;
-					$me.attr({
-
-						'aria-hidden': false, // mark all panels as hidden
-						
-					});
+					
 					$hdr.next().slideUp(plugin.options.animationSpeed);
 				} else { 
 					$btn.addClass('expanded');
 					$btn.attr({
 						"aria-expanded": false
 					})
-					var $me = $(this), id = $elem.attr('id') + '_panel_' + i;
-					$me.attr({
-
-						'aria-hidden': true, // mark all panels as hidden
-						
-					});
 					$hdr.next().slideDown(plugin.options.animationSpeed);
 				}
 			});
