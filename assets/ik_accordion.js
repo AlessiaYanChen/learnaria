@@ -159,10 +159,7 @@
 					$btn.attr({
 						"aria-expanded": false
 					})
-					$me.attr{
-						"aria-expanded": true;
-						"aria-hidden": false;
-					})
+					
 					$hdr.next().slideDown(plugin.options.animationSpeed);
 				}
 			});
