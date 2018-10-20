@@ -2,7 +2,7 @@
  
 	var pluginName = 'ik_treemenu',
 		defaults = {
-			'instructions': 'Use up or down arrows to move through menu items, and Enter or Spacebar to toggle submenus open and closed.',
+    'instructions': 'Use up or down arrows to move through menu items, and Enter or Spacebar to toggle submenus open and closed.',
 			'menuTitle': 'Breakfast Menu',
 			'expandAll': true
 		};
@@ -34,18 +34,18 @@
 		id = 'tree' + $('.ik_treemenu').length; // create unique id
 				
 		$elem
-			.addClass('ik_treemenu')
-			.attr({
-				'tabindex': 0,
-				'aria-labelledby': id + '_instructions'
-				});
+    	.addClass('ik_treemenu')
+    	.attr({
+        'tabindex': 0,
+        'aria-labelledby': id + '_instructions'
+        });
 		
 		$('<div/>') // add div element to be used with aria-labelledby attribute of the menu
 			.text(plugin.options.instructions) // get instruction text from plugin options
 			.addClass('ik_readersonly') // hide element from visual display
 			.attr({
 				'id': id + '_instructions', 
-				 'aria-hidden': 'true'  // hide element from screen readers to prevent it from being read twice
+        'aria-hidden': 'true'  // hide element from screen readers to prevent it from being read twice
 			})
 			.appendTo($elem);
 		
@@ -61,8 +61,8 @@
 			.find('ul:first')  // set topmost ul element as a tree container
 			.attr({
 				'id': id,
-				 'role': 'tree', // assign tree role
-				'aria-labelledby': id + '_title' // label with tree title
+        'role': 'tree', // assign tree role
+        'aria-labelledby': id + '_title' // label with tree title
 			});
 		
 		$elem // set all li elements as tree folders and items
@@ -76,11 +76,11 @@
 				
 				$me.attr({
 					'id': id + '_menuitem_' + i,
-					 'role': 'treeitem', // assign treeitem role
-					'tabindex': -1, // remove from tab order
-					'aria-level': $me.parents('ul').length, // add tree level
-					'aria-setsize': $me.siblings().length + 1, // define number of treeitems on the current level
-					'aria-posinset': $me.parent().children().index($me) + 1 // define position of the current element on the current level
+          'role': 'treeitem', // assign treeitem role
+          'tabindex': -1, // remove from tab order
+          'aria-level': $me.parents('ul').length, // add tree level
+          'aria-setsize': $me.siblings().length + 1, // define number of treeitems on the current level
+          'aria-posinset': $me.parent().children().index($me) + 1 // define position of the current element on the current level
 					});
 				
 				$($me.contents()[0]).wrap('<span></span>'); // wrap text element of each treitem with span element
@@ -88,43 +88,43 @@
 				if ($me.children('ul').length) {  // if the current treeitem has submenu
 					
 					if (plugin.options.expandAll) { // expand or collapse all tree levels based on configuration
-						// don't do anything
-						$me.attr({
-							'aria-expanded': true
-						});
+              // don't do anything
+              $me.attr({
+                'aria-expanded': true
+            });
 					} else {
 						$me
-							.attr({
-								'aria-expanded': false
-							})    
-							.addClass('collapsed');
+            	.attr({
+                  'aria-expanded': false
+              })       
+            	.addClass('collapsed');
 					}
 					
 					$me
-						.attr({
-							'aria-label': $me.children('span:first').text()
-						})
+          	.attr({
+                'aria-label': $me.children('span:first').text()
+            })
 						.children('span')
 						.addClass('folder')
-						.attr({
-						   'role': 'presentation'
-						});
+            .attr({
+                 'role': 'presentation'
+              });
 					
 				} else {
 					
 					//aria-selected goes here
-					$me.attr({'aria-selected': false});      
+					$me.attr({'aria-selected': false});
 				}
 			
 			})
 			.on('click', {'plugin': plugin}, plugin.onClick)
-			.on('keydown', {'plugin': plugin}, plugin.onKeyDown);
-			
-			$elem // make the first treeitem focusable
-				.find('li:first')
-				.attr({
-					'tabindex': 0
-				});
+      .on('keydown', {'plugin': plugin}, plugin.onKeyDown);
+      
+      $elem // make the first treeitem focusable
+        .find('li:first')
+        .attr({
+            'tabindex': 0
+        });
 		
 	};
 	
@@ -137,21 +137,20 @@
 	Plugin.prototype.selectItem = function($item, plugin) {
 		var $elem = plugin.element;
 		
-		$elem.find('[aria-selected=true]') // remove previous selection
+    $elem.find('[aria-selected=true]') // remove previous selection
             .attr({
                 'tabindex': -1,
                 'aria-selected': false
             });
-			
-		
+            
 		$elem.find('.focused') // remove highlight form previousely selected treeitem
 			.removeClass('focused');
-		
-		$elem.find('li').attr({ // remove all treeitems from tab order
+    
+     $elem.find('li').attr({ // remove all treeitems from tab order
             'tabindex': -1
-        });
-		
-		$item.attr({ // select specified treeitem
+        })
+        
+        $item.attr({ // select specified treeitem
             'tabindex': 0, // add selected treeitem to tab order
             'aria-selected': true
         });
@@ -177,25 +176,25 @@
 			if ($item.hasClass('collapsed')) {  // expand if collapsed
       
 				$item
-					.attr({
-						'aria-expanded': true
-					})
-					.removeClass('collapsed');
+        	 .attr({
+                    'aria-expanded': true
+            })
+          .removeClass('collapsed');
         
 			} else { 							// otherwise collapse
       
 				$item
-					.attr({
-						'aria-expanded': false
-					})
-					.addClass('collapsed');
+        	.attr({
+                'aria-expanded': false
+            })
+          .addClass('collapsed');
         
 			}
       
 		}
 	}
 	
-	/**
+  /**
      * Handles keydown event on header button.
      *
      * @param {Object} event - Event object.
@@ -261,7 +260,6 @@
         }
        
     }
-	
 	/** 
 	 * Handles mouseover event on header button.
 	 * 
