@@ -33,10 +33,10 @@
 		$elem = this.element.addClass('ik_tabs');
 		
 		$tabbar = $('<ul/>') // create ul element to hold all tabs
-			.addClass('ik_tabbar cf')
 			.attr({
 				'role': 'tablist' // add tablistr role
 			})
+			.addClass('ik_tabbar cf')
 			.prependTo($elem);
 		
 		plugin.panels = $elem // initialize panels and create tabs
@@ -64,8 +64,8 @@
 					'aria-controls': 'panel' + i // define which panel it controls
 
 				})
-				.on('keydown', {'plugin': plugin, 'index': i}, plugin.onKeyDown) // add keyboard event handler
 				.text(lbl > '' ? lbl : 'Tab ' + (i + 1))
+				.on('keydown', {'plugin': plugin, 'index': i}, plugin.onKeyDown) // add keyboard event handler
 				.on('click', {'plugin': plugin, 'index': i}, plugin.selectTab) // add mouse event handler
 				.appendTo($tabbar);
 			});
@@ -136,19 +136,19 @@
 		$panels = plugin.panels;
 		
 		$tabs // deselect all tabs
+			.removeClass('selected')
 			.attr({
 				'aria-selected': false,
 				'tabindex': -1 // remove them from tab order
 			})
-			.removeClass('selected')
 			.blur();
 		
 		$($tabs[ind]) // select specified tab
+			.addClass('selected')
 			.attr({
 				'aria-selected': true,
 				tabindex: 0
 			});
-			.addClass('selected');
 		
 		if (event.type) $($tabs[ind]).focus(); // move focus to current tab if reached by mouse or keyboard
 		
